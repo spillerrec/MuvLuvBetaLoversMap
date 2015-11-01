@@ -16,6 +16,8 @@
 				color: yellow;
 				font-weight: bold;
 				cursor: url("crosshair.png") 16 16, crosshair;
+				background-image:url("grid.png");
+				background-color: #000026;
 			}
 		.jvectormap-tip{
 			font-family: 'Share Tech Mono', monospace;
@@ -23,10 +25,18 @@
 			font-weight: bold;
 			border: 2px solid yellow;
 		}
+		h1{
+			position:fixed;
+			margin: 40px;
+			z-index:1;
+		}
+		#source{ position:fixed; bottom:0; padding:8px; }
   </style>
 </head>
 <body>
-  <div id="world-map"></div>
+	<h1>Beta <span style="text-decoration: line-through">hit</span>friend list</h1>
+	<div id="world-map"></div>
+	<a id="source" href="https://github.com/spillerrec/MuvLuvBetaLoversMap">code</a>
   <script>
 	var gdpData = <?php
 			$db = new PDO('sqlite:hitlist.sqlite');
@@ -43,14 +53,16 @@
 		$(function(){
 			$('#world-map').vectorMap(
 				{	map: 'world_mill'
-				,	backgroundColor: "#000026"
+				,	backgroundColor: "none"
 				,	regionStyle:
 					{	initial:
 						{ 	fill: "#131969"
+						,	"fill-opacity": 0.8
 						,	stroke: "#42478d"
 						,	"stroke-width": "1px"
 						}
-					,	hover: { cursor: "url('crosshair.png') 16 16" }
+					,	hover: { cursor: "url('crosshair.png') 16 16"
+						,	"fill-opacity": 1 }
 					}
 				,	regionLabelStyle:
 					{	hover:
